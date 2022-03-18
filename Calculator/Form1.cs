@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Calculator.Math;
 
 namespace Calculator
 {
     public partial class Calculator : Form
     {
+        Math.Calculations calculations = new Math.Calculations();
         public Calculator()
         {
             InitializeComponent();
@@ -59,13 +61,50 @@ namespace Calculator
         {
             lbl_Window.Text += "9";
         }
+        
+        private void btn_Com_Click(object sender, EventArgs e)
+        {
+            lbl_Window.Text += ".";
+        }
+
 
         private void Calculator_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void lbl_Window_Click(object sender, EventArgs e)
+        private void btn_C_Click(object sender, EventArgs e)
+        {
+            lbl_Window.Text = "";
+        }
+
+        private void btn_Plus_Click(object sender, EventArgs e)
+        {
+            calculations.currNumber += Convert.ToDouble(lbl_Window.Text);
+            lbl_PreviousCalcWindow.Text += lbl_Window.Text + "+";
+            lbl_Window.Text = "";
+            calculations.requestedCalc = "addition";
+        }
+        private void btn_PowerTwo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Del_Click(object sender, EventArgs e)
+        {
+            if (lbl_Window.Text.Length != 0) {
+                lbl_Window.Text = lbl_Window.Text.Remove(lbl_Window.Text.Length - 1);
+            }
+        }
+
+        private void btn_Equal_Click(object sender, EventArgs e)
+        {
+            calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
+            lbl_PreviousCalcWindow.Text += lbl_Window.Text;
+            lbl_Window.Text = Convert.ToString(calculations.PerformCalculation());
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

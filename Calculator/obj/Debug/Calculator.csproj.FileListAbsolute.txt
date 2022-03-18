@@ -8,3 +8,13 @@ C:\Users\alpha\source\repos\Calculator\Calculator\obj\Debug\Calculator.csproj.Co
 C:\Users\alpha\source\repos\Calculator\Calculator\obj\Debug\Calculator.exe
 C:\Users\alpha\source\repos\Calculator\Calculator\obj\Debug\Calculator.pdb
 C:\Users\alpha\source\repos\Calculator\Calculator\obj\Debug\Calculator.Calculator.resources
+F:\personal_Projects\Calculator_GUI\Calculator_WindowsApp\Calculator\bin\Debug\Calculator.exe.config
+F:\personal_Projects\Calculator_GUI\Calculator_WindowsApp\Calculator\bin\Debug\Calculator.exe
+F:\personal_Projects\Calculator_GUI\Calculator_WindowsApp\Calculator\bin\Debug\Calculator.pdb
+F:\personal_Projects\Calculator_GUI\Calculator_WindowsApp\Calculator\obj\Debug\Calculator.csproj.AssemblyReference.cache
+F:\personal_Projects\Calculator_GUI\Calculator_WindowsApp\Calculator\obj\Debug\Calculator.Calculator.resources
+F:\personal_Projects\Calculator_GUI\Calculator_WindowsApp\Calculator\obj\Debug\Calculator.Properties.Resources.resources
+F:\personal_Projects\Calculator_GUI\Calculator_WindowsApp\Calculator\obj\Debug\Calculator.csproj.GenerateResource.cache
+F:\personal_Projects\Calculator_GUI\Calculator_WindowsApp\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+F:\personal_Projects\Calculator_GUI\Calculator_WindowsApp\Calculator\obj\Debug\Calculator.exe
+F:\personal_Projects\Calculator_GUI\Calculator_WindowsApp\Calculator\obj\Debug\Calculator.pdb
