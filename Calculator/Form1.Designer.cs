@@ -164,6 +164,7 @@ namespace Calculator
             this.btn_Minus.TabIndex = 34;
             this.btn_Minus.Text = "-";
             this.btn_Minus.UseVisualStyleBackColor = true;
+            this.btn_Minus.Click += new System.EventHandler(this.btn_Minus_Click);
             // 
             // btn_6
             // 
@@ -207,6 +208,7 @@ namespace Calculator
             this.btn_X.TabIndex = 30;
             this.btn_X.Text = "X";
             this.btn_X.UseVisualStyleBackColor = true;
+            this.btn_X.Click += new System.EventHandler(this.btn_X_Click);
             // 
             // btn_3
             // 
@@ -296,6 +298,7 @@ namespace Calculator
             this.btn_Div.TabIndex = 47;
             this.btn_Div.Text = "÷";
             this.btn_Div.UseVisualStyleBackColor = true;
+            this.btn_Div.Click += new System.EventHandler(this.btn_Div_Click);
             // 
             // btn_Sqrt
             // 

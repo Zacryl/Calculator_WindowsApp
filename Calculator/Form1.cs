@@ -120,15 +120,25 @@ namespace Calculator
             calculations.currNumber = 0;
             calculations.newNumber = 0;
         }
-
+        //Every button that calls a calculation makes the current number typed = the first number while it sets calculatedNumber = true
+        //so the software knows the next input is a new number and to start using history.
         private void btn_Plus_Click(object sender, EventArgs e)
         {
-            calculations.currNumber +=  Convert.ToDouble(lbl_Window.Text);
+            calculations.currNumber =  Convert.ToDouble(lbl_Window.Text);
             calculations.calculatedNumber = true;
             calculations.requestedCalc = "addition";
             lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
             lbl_Window.Text = "";
         }
+        private void btn_X_Click(object sender, EventArgs e)
+        {
+            calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+            calculations.calculatedNumber = true;
+            calculations.requestedCalc = "multiplication";
+            lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
+            lbl_Window.Text = "";
+        }
+
         private void btn_PowerTwo_Click(object sender, EventArgs e)
         {
 
@@ -145,14 +155,34 @@ namespace Calculator
         {
             if (calculations.calculatedNumber){
                 lbl_PreviousCalcWindow.Text = calculations.currNumber + calculations.checkSymbol() + calculations.newNumber;
-            }else{
-            }
                 lbl_Window.Text = calculations.PerformCalculation();
+            }
+            else{
+                lbl_Window.Text = lbl_Window.Text;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Minus_Click(object sender, EventArgs e)
+        {
+            calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+            calculations.calculatedNumber = true;
+            calculations.requestedCalc = "subtraction";
+            lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
+            lbl_Window.Text = "";
+        }
+
+        private void btn_Div_Click(object sender, EventArgs e)
+        {
+            calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+            calculations.calculatedNumber = true;
+            calculations.requestedCalc = "division";
+            lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
+            lbl_Window.Text = "";
         }
     }
 }
