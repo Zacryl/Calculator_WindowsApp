@@ -8,15 +8,20 @@ namespace Calculator.Math {
         public bool calculatedNumber = false;
         public string requestedCalc;
 
-        public double PerformCalculation()
-        {
-            if(requestedCalc == "addition")
-            {
+        public string checkSymbol() {
+            if (requestedCalc == "addition"){
+                return "+";
+            }
+            else {
+                return "";
+            }
+        }
+        public string PerformCalculation(){
+            if(requestedCalc == "addition"){
                 Addition();
-                return currNumber;
-            }else
-            {
-                return -6.9;
+                return Convert.ToString(currNumber);
+            }else{
+                return Convert.ToString(currNumber);
             }
         }
 
