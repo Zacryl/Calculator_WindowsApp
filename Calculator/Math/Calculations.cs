@@ -9,6 +9,22 @@ namespace Calculator.Math {
         public bool calculatedNumber = false;
         public string requestedCalc;
         //Finds the prober symbol to display
+        public bool CheckValidNumber(string input)
+        {
+            try
+            {
+                Convert.ToDouble(input);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+            catch (OverflowException)
+            {
+                return false;
+            }
+        }
         public string checkSymbol(){
             switch (requestedCalc)
             {
@@ -57,6 +73,11 @@ namespace Calculator.Math {
             currNumber = System.Math.Sqrt(currNumber);
             calculatedNumber = true;
         }
+        public void Pct()
+        {
+            newNumber += newNumber/ 100;
+            calculatedNumber = true;
+        }
         //Compares requested calculation with possible methods
         public string PerformCalculation(){
             switch (requestedCalc){
@@ -78,8 +99,11 @@ namespace Calculator.Math {
                 case "sqrt":
                     Sqrt();
                     return Convert.ToString(currNumber);
+                case "Pct":
+                    Pct();
+                    return Convert.ToString(currNumber);
                 default:
-                return Convert.ToString(currNumber);
+                    return Convert.ToString(currNumber);
             }
         }
 

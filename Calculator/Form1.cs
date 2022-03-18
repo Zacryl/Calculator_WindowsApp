@@ -18,6 +18,8 @@ namespace Calculator
         {
             InitializeComponent();
         }
+
+        //A lot of repeating - Make a method that cleans up code by removing repetition
         private void btn_0_Click(object sender, EventArgs e)
         {
             lbl_Window.Text += "0";
@@ -104,6 +106,7 @@ namespace Calculator
         
         private void btn_Com_Click(object sender, EventArgs e)
         {
+            //Look into string.Split method to implement this
             lbl_Window.Text += ".";
         }
 
@@ -119,6 +122,8 @@ namespace Calculator
             lbl_PreviousCalcWindow.Text = "";
             calculations.currNumber = 0;
             calculations.newNumber = 0;
+            calculations.calculatedNumber = false;
+            calculations.requestedCalc = "";
         }
         private void btn_Del_Click(object sender, EventArgs e)
         {
@@ -129,63 +134,100 @@ namespace Calculator
         }
         private void btn_Neg_Click(object sender, EventArgs e)
         {
-            calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
-            calculations.calculatedNumber = true;
-            calculations.currNumber = -calculations.currNumber;
-            lbl_Window.Text = Convert.ToString(calculations.currNumber);
+            if (calculations.CheckValidNumber(lbl_Window.Text))
+            {
+                calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+                calculations.calculatedNumber = true;
+                calculations.currNumber = -calculations.currNumber;
+                lbl_Window.Text = Convert.ToString(calculations.currNumber);
+            }
         }
         //Every button that calls a calculation makes the current number typed = the first number while it sets calculatedNumber = true
         //so the software knows the next input is a new number and to start using history.
         private void btn_Plus_Click(object sender, EventArgs e)
         {
-            calculations.currNumber =  Convert.ToDouble(lbl_Window.Text);
-            calculations.calculatedNumber = true;
-            calculations.requestedCalc = "addition";
-            lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
-            lbl_Window.Text = "";
+            if (calculations.CheckValidNumber(lbl_Window.Text))
+            {
+                calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+                calculations.calculatedNumber = true;
+                calculations.requestedCalc = "addition";
+                lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
+                lbl_Window.Text = "";
+            }
         }
         private void btn_X_Click(object sender, EventArgs e)
         {
-            calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
-            calculations.calculatedNumber = true;
-            calculations.requestedCalc = "multiplication";
-            lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
-            lbl_Window.Text = "";
+            if (calculations.CheckValidNumber(lbl_Window.Text))
+            {
+                //Add this to the universal method call I will add later before continueing
+                if (calculations.calculatedNumber)
+                {
+                    calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
+                    lbl_Window.Text = calculations.PerformCalculation();
+                }
+                    calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+                    calculations.calculatedNumber = true;
+                    calculations.requestedCalc = "multiplication";
+                    lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
+                    lbl_Window.Text = "";
+            }
         }
 
         private void btn_PowerTwo_Click(object sender, EventArgs e)
         {
-            calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
-            calculations.calculatedNumber = true;
-            calculations.requestedCalc = "sqr";
-            lbl_PreviousCalcWindow.Text = calculations.currNumber + calculations.checkSymbol() + "=";
-            lbl_Window.Text = calculations.PerformCalculation();
+            if (calculations.CheckValidNumber(lbl_Window.Text))
+            {
+                calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+                calculations.calculatedNumber = true;
+                calculations.requestedCalc = "sqr";
+                lbl_PreviousCalcWindow.Text = calculations.currNumber + calculations.checkSymbol() + "=";
+                lbl_Window.Text = calculations.PerformCalculation();
+            }
         }
         private void btn_Minus_Click(object sender, EventArgs e)
         {
-            calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
-            calculations.calculatedNumber = true;
-            calculations.requestedCalc = "subtraction";
-            lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
-            lbl_Window.Text = "";
+
+            if (calculations.CheckValidNumber(lbl_Window.Text))
+            {
+                calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+                calculations.calculatedNumber = true;
+                calculations.requestedCalc = "subtraction";
+                lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
+                lbl_Window.Text = "";
+            }
         }
 
         private void btn_Div_Click(object sender, EventArgs e)
         {
-            calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
-            calculations.calculatedNumber = true;
-            calculations.requestedCalc = "division";
-            lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
-            lbl_Window.Text = "";
+            if (calculations.CheckValidNumber(lbl_Window.Text))
+            {
+                calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+                calculations.calculatedNumber = true;
+                calculations.requestedCalc = "division";
+                lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
+                lbl_Window.Text = "";
+            }
         }
 
         private void btn_Sqrt_Click(object sender, EventArgs e)
         {
-            calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
-            calculations.calculatedNumber = true;
-            calculations.requestedCalc = "sqrt";
-            lbl_PreviousCalcWindow.Text = calculations.checkSymbol() + calculations.currNumber + "=";
-            lbl_Window.Text = calculations.PerformCalculation();
+            if (calculations.CheckValidNumber(lbl_Window.Text)){
+                calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+                calculations.calculatedNumber = true;
+                calculations.requestedCalc = "sqrt";
+                lbl_PreviousCalcWindow.Text = calculations.checkSymbol() + calculations.currNumber + "=";
+                lbl_Window.Text = calculations.PerformCalculation();
+            }
+        }
+        private void btn_Pct_Click(object sender, EventArgs e)
+        {
+            //Not sure how to implement this atm with my code
+            //if (calculations.calculatedNumber) {
+              //  calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
+                //calculations.requestedCalc = "pct";
+                //lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
+                //lbl_Window.Text = "";
+            //}
         }
         private void btn_Equal_Click(object sender, EventArgs e)
         {
@@ -203,11 +245,17 @@ namespace Calculator
             {
                 lbl_PreviousCalcWindow.Text = calculations.currNumber + calculations.checkSymbol() + calculations.newNumber + "=";
                 lbl_Window.Text = calculations.PerformCalculation();
+
             }
             else
             {
                 lbl_Window.Text = lbl_Window.Text;
             }
+        }
+
+        private void lbl_output_Click(object sender, EventArgs e)
+        {
+            lbl_output.Text = Convert.ToString(calculations.currNumber);
         }
     }
 }
