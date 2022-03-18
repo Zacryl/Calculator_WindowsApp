@@ -100,6 +100,7 @@ namespace Calculator
             this.btn_Neg.TabIndex = 40;
             this.btn_Neg.Text = "+/-";
             this.btn_Neg.UseVisualStyleBackColor = true;
+            this.btn_Neg.Click += new System.EventHandler(this.btn_Neg_Click);
             // 
             // btn_Pct
             // 
@@ -309,6 +310,7 @@ namespace Calculator
             this.btn_Sqrt.TabIndex = 46;
             this.btn_Sqrt.Text = "√x";
             this.btn_Sqrt.UseVisualStyleBackColor = true;
+            this.btn_Sqrt.Click += new System.EventHandler(this.btn_Sqrt_Click);
             // 
             // btn_PowerTwo
             // 
@@ -324,8 +326,10 @@ namespace Calculator
             // lbl_Window
             // 
             this.lbl_Window.BackColor = System.Drawing.Color.Azure;
-            this.lbl_Window.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_Window.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbl_Window.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Window.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Window.ForeColor = System.Drawing.Color.Black;
             this.lbl_Window.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbl_Window.Location = new System.Drawing.Point(12, 81);
             this.lbl_Window.MaximumSize = new System.Drawing.Size(500, 100);
@@ -339,7 +343,10 @@ namespace Calculator
             // 
             this.lbl_PreviousCalcWindow.BackColor = System.Drawing.Color.Azure;
             this.lbl_PreviousCalcWindow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_PreviousCalcWindow.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lbl_PreviousCalcWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_PreviousCalcWindow.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_PreviousCalcWindow.ForeColor = System.Drawing.Color.Black;
             this.lbl_PreviousCalcWindow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbl_PreviousCalcWindow.Location = new System.Drawing.Point(12, 41);
             this.lbl_PreviousCalcWindow.MaximumSize = new System.Drawing.Size(500, 100);

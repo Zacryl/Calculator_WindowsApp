@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Calculator.Math {
@@ -20,6 +20,10 @@ namespace Calculator.Math {
                     return "x";
                 case "division":
                     return "/";
+                case "sqr":
+                    return "^2";
+                case "sqrt":
+                    return "√";
                 default:
                     return "";
             }
@@ -43,6 +47,16 @@ namespace Calculator.Math {
             currNumber /= newNumber;
             calculatedNumber = true;
         }
+        public void Sqr()
+        {
+            currNumber = System.Math.Pow(currNumber, 2.0);
+            calculatedNumber = true;
+        }
+        public void Sqrt()
+        {
+            currNumber = System.Math.Sqrt(currNumber);
+            calculatedNumber = true;
+        }
         //Compares requested calculation with possible methods
         public string PerformCalculation(){
             switch (requestedCalc){
@@ -57,6 +71,12 @@ namespace Calculator.Math {
                 return Convert.ToString(currNumber);
                 case "division":
                     Division();
+                    return Convert.ToString(currNumber);
+                case "sqr":
+                    Sqr();
+                    return Convert.ToString(currNumber);
+                case "sqrt":
+                    Sqrt();
                     return Convert.ToString(currNumber);
                 default:
                 return Convert.ToString(currNumber);

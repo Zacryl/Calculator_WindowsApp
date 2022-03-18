@@ -120,6 +120,20 @@ namespace Calculator
             calculations.currNumber = 0;
             calculations.newNumber = 0;
         }
+        private void btn_Del_Click(object sender, EventArgs e)
+        {
+            if (lbl_Window.Text.Length != 0)
+            {
+                lbl_Window.Text = lbl_Window.Text.Remove(lbl_Window.Text.Length - 1);
+            }
+        }
+        private void btn_Neg_Click(object sender, EventArgs e)
+        {
+            calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+            calculations.calculatedNumber = true;
+            calculations.currNumber = -calculations.currNumber;
+            lbl_Window.Text = Convert.ToString(calculations.currNumber);
+        }
         //Every button that calls a calculation makes the current number typed = the first number while it sets calculatedNumber = true
         //so the software knows the next input is a new number and to start using history.
         private void btn_Plus_Click(object sender, EventArgs e)
@@ -141,32 +155,12 @@ namespace Calculator
 
         private void btn_PowerTwo_Click(object sender, EventArgs e)
         {
-
+            calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+            calculations.calculatedNumber = true;
+            calculations.requestedCalc = "sqr";
+            lbl_PreviousCalcWindow.Text = calculations.currNumber + calculations.checkSymbol() + "=";
+            lbl_Window.Text = calculations.PerformCalculation();
         }
-
-        private void btn_Del_Click(object sender, EventArgs e)
-        {
-            if (lbl_Window.Text.Length != 0) {
-                lbl_Window.Text = lbl_Window.Text.Remove(lbl_Window.Text.Length - 1);
-            }
-        }
-
-        private void btn_Equal_Click(object sender, EventArgs e)
-        {
-            if (calculations.calculatedNumber){
-                lbl_PreviousCalcWindow.Text = calculations.currNumber + calculations.checkSymbol() + calculations.newNumber;
-                lbl_Window.Text = calculations.PerformCalculation();
-            }
-            else{
-                lbl_Window.Text = lbl_Window.Text;
-            }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_Minus_Click(object sender, EventArgs e)
         {
             calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
@@ -183,6 +177,37 @@ namespace Calculator
             calculations.requestedCalc = "division";
             lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
             lbl_Window.Text = "";
+        }
+
+        private void btn_Sqrt_Click(object sender, EventArgs e)
+        {
+            calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+            calculations.calculatedNumber = true;
+            calculations.requestedCalc = "sqrt";
+            lbl_PreviousCalcWindow.Text = calculations.checkSymbol() + calculations.currNumber + "=";
+            lbl_Window.Text = calculations.PerformCalculation();
+        }
+        private void btn_Equal_Click(object sender, EventArgs e)
+        {
+            if (calculations.requestedCalc == "sqr")
+            {
+                lbl_PreviousCalcWindow.Text = calculations.currNumber + calculations.checkSymbol() + "=";
+                lbl_Window.Text = calculations.PerformCalculation();
+            }
+            else if (calculations.requestedCalc == "sqrt")
+            {
+                lbl_PreviousCalcWindow.Text = calculations.checkSymbol() + calculations.currNumber + "=";
+                lbl_Window.Text = calculations.PerformCalculation();
+            }
+            else if (calculations.calculatedNumber)
+            {
+                lbl_PreviousCalcWindow.Text = calculations.currNumber + calculations.checkSymbol() + calculations.newNumber + "=";
+                lbl_Window.Text = calculations.PerformCalculation();
+            }
+            else
+            {
+                lbl_Window.Text = lbl_Window.Text;
+            }
         }
     }
 }
