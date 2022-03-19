@@ -40,6 +40,8 @@ namespace Calculator.Math {
                     return "^2";
                 case "sqrt":
                     return "√";
+                case "oneDiv":
+                    return "1/";
                 default:
                     return "";
             }
@@ -78,6 +80,10 @@ namespace Calculator.Math {
             newNumber += newNumber/ 100;
             calculatedNumber = true;
         }
+        public void OneDiv()
+        {
+            currNumber = 1/currNumber;
+        }
         //Compares requested calculation with possible methods
         public string PerformCalculation(){
             switch (requestedCalc){
@@ -101,6 +107,9 @@ namespace Calculator.Math {
                     return Convert.ToString(currNumber);
                 case "Pct":
                     Pct();
+                    return Convert.ToString(currNumber);
+                case "oneDiv":
+                    OneDiv();
                     return Convert.ToString(currNumber);
                 default:
                     return Convert.ToString(currNumber);

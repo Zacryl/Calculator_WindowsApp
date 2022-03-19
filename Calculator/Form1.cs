@@ -19,95 +19,76 @@ namespace Calculator
             InitializeComponent();
         }
 
+        private void addNumber(string num)
+        {
+            lbl_Window.Text += num;
+            if (calculations.calculatedNumber)
+            {
+                calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
+            }
+        }
+
+        private void callCalculation(string calc)
+        {
+            if (calculations.CheckValidNumber(lbl_Window.Text))
+            {
+                calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
+                calculations.calculatedNumber = true;
+                calculations.requestedCalc = calc;
+                lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
+                lbl_Window.Text = "";
+            }
+        }
+
         //A lot of repeating - Make a method that cleans up code by removing repetition
         private void btn_0_Click(object sender, EventArgs e)
         {
-            lbl_Window.Text += "0";
-            if (calculations.calculatedNumber)
-            {
-                calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
-            }
+            addNumber("0");
         }
         private void btn_1_Click(object sender, EventArgs e)
         {
-            lbl_Window.Text += "1";
-            if (calculations.calculatedNumber)
-            {
-                calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
-            }
+            addNumber("1");
         }
         private void btn_2_Click(object sender, EventArgs e)
         {
-            lbl_Window.Text += "2";
-            if (calculations.calculatedNumber)
-            {
-                calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
-            }
+            addNumber("2");
         }
         private void btn_3_Click(object sender, EventArgs e)
         {
-            lbl_Window.Text += "3";
-            if (calculations.calculatedNumber)
-            {
-                calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
-            }
+            addNumber("3");
         }
         private void btn_4_Click(object sender, EventArgs e)
         {
-            lbl_Window.Text += "4";
-            if (calculations.calculatedNumber)
-            {
-                calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
-            }
+            addNumber("4");
         }
         private void btn_5_Click(object sender, EventArgs e)
         {
-            lbl_Window.Text += "5";
-            if (calculations.calculatedNumber)
-            {
-                calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
-            }
+            addNumber("5");
         }
         private void btn_6_Click(object sender, EventArgs e)
         {
-            lbl_Window.Text += "6";
-            if (calculations.calculatedNumber)
-            {
-                calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
-            }
+            addNumber("6");
         }
 
         private void btn_7_Click(object sender, EventArgs e)
         {
-            lbl_Window.Text += "7";
-            if (calculations.calculatedNumber)
-            {
-                calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
-            }
+            addNumber("7");
         }
 
         private void btn_8_Click(object sender, EventArgs e)
         {
-            lbl_Window.Text += "8";
-            if (calculations.calculatedNumber)
-            {
-                calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
-            }
+            addNumber("8");
         }
 
         private void btn_9_Click(object sender, EventArgs e)
         {
-            lbl_Window.Text += "9";
-            if (calculations.calculatedNumber)
-            {
-                calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
-            }
+            addNumber("9");
         }
         
         private void btn_Com_Click(object sender, EventArgs e)
         {
-            //Look into string.Split method to implement this
-            lbl_Window.Text += ".";
+            //Turns it out worked but failed because of localisation
+            lbl_Window.Text += ",";
         }
 
 
@@ -146,14 +127,7 @@ namespace Calculator
         //so the software knows the next input is a new number and to start using history.
         private void btn_Plus_Click(object sender, EventArgs e)
         {
-            if (calculations.CheckValidNumber(lbl_Window.Text))
-            {
-                calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
-                calculations.calculatedNumber = true;
-                calculations.requestedCalc = "addition";
-                lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
-                lbl_Window.Text = "";
-            }
+            callCalculation("addition");
         }
         private void btn_X_Click(object sender, EventArgs e)
         {
@@ -165,59 +139,37 @@ namespace Calculator
                     calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
                     lbl_Window.Text = calculations.PerformCalculation();
                 }
-                    calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
-                    calculations.calculatedNumber = true;
-                    calculations.requestedCalc = "multiplication";
-                    lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
-                    lbl_Window.Text = "";
+                callCalculation("multiplication");
             }
         }
 
         private void btn_PowerTwo_Click(object sender, EventArgs e)
         {
-            if (calculations.CheckValidNumber(lbl_Window.Text))
-            {
-                calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
-                calculations.calculatedNumber = true;
-                calculations.requestedCalc = "sqr";
-                lbl_PreviousCalcWindow.Text = calculations.currNumber + calculations.checkSymbol() + "=";
-                lbl_Window.Text = calculations.PerformCalculation();
-            }
+            callCalculation("sqr");
+            lbl_PreviousCalcWindow.Text = calculations.currNumber + calculations.checkSymbol() + "=";
+            lbl_Window.Text = calculations.PerformCalculation();
         }
         private void btn_Minus_Click(object sender, EventArgs e)
         {
-
-            if (calculations.CheckValidNumber(lbl_Window.Text))
-            {
-                calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
-                calculations.calculatedNumber = true;
-                calculations.requestedCalc = "subtraction";
-                lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
-                lbl_Window.Text = "";
-            }
+            callCalculation("subtraction");
         }
 
         private void btn_Div_Click(object sender, EventArgs e)
         {
-            if (calculations.CheckValidNumber(lbl_Window.Text))
-            {
-                calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
-                calculations.calculatedNumber = true;
-                calculations.requestedCalc = "division";
-                lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
-                lbl_Window.Text = "";
-            }
+            callCalculation("division");
         }
 
         private void btn_Sqrt_Click(object sender, EventArgs e)
         {
-            if (calculations.CheckValidNumber(lbl_Window.Text)){
-                calculations.currNumber = Convert.ToDouble(lbl_Window.Text);
-                calculations.calculatedNumber = true;
-                calculations.requestedCalc = "sqrt";
-                lbl_PreviousCalcWindow.Text = calculations.checkSymbol() + calculations.currNumber + "=";
-                lbl_Window.Text = calculations.PerformCalculation();
-            }
+            callCalculation("sqrt");
+            lbl_PreviousCalcWindow.Text = calculations.checkSymbol() + calculations.currNumber + "=";
+            lbl_Window.Text = calculations.PerformCalculation();
+        }
+        private void btn_OneDiv_Click(object sender, EventArgs e)
+        {
+            callCalculation("oneDiv");
+            lbl_PreviousCalcWindow.Text = calculations.checkSymbol() + calculations.currNumber + "=";
+            lbl_Window.Text = calculations.PerformCalculation();
         }
         private void btn_Pct_Click(object sender, EventArgs e)
         {
@@ -236,7 +188,7 @@ namespace Calculator
                 lbl_PreviousCalcWindow.Text = calculations.currNumber + calculations.checkSymbol() + "=";
                 lbl_Window.Text = calculations.PerformCalculation();
             }
-            else if (calculations.requestedCalc == "sqrt")
+            else if (calculations.requestedCalc == "sqrt" ||calculations.requestedCalc == "oneDiv")
             {
                 lbl_PreviousCalcWindow.Text = calculations.checkSymbol() + calculations.currNumber + "=";
                 lbl_Window.Text = calculations.PerformCalculation();
@@ -251,11 +203,6 @@ namespace Calculator
             {
                 lbl_Window.Text = lbl_Window.Text;
             }
-        }
-
-        private void lbl_output_Click(object sender, EventArgs e)
-        {
-            lbl_output.Text = Convert.ToString(calculations.currNumber);
         }
     }
 }

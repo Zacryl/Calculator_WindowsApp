@@ -34,7 +34,6 @@ namespace Calculator
             this.btn_Com = new System.Windows.Forms.Button();
             this.btn_0 = new System.Windows.Forms.Button();
             this.btn_Neg = new System.Windows.Forms.Button();
-            this.btn_Pct = new System.Windows.Forms.Button();
             this.btn_Plus = new System.Windows.Forms.Button();
             this.btn_9 = new System.Windows.Forms.Button();
             this.btn_8 = new System.Windows.Forms.Button();
@@ -49,14 +48,14 @@ namespace Calculator
             this.btn_1 = new System.Windows.Forms.Button();
             this.btn_Del = new System.Windows.Forms.Button();
             this.btn_C = new System.Windows.Forms.Button();
-            this.btn_CE = new System.Windows.Forms.Button();
             this.btn_OneDiv = new System.Windows.Forms.Button();
             this.btn_Div = new System.Windows.Forms.Button();
             this.btn_Sqrt = new System.Windows.Forms.Button();
             this.btn_PowerTwo = new System.Windows.Forms.Button();
             this.lbl_Window = new System.Windows.Forms.Label();
             this.lbl_PreviousCalcWindow = new System.Windows.Forms.Label();
-            this.lbl_output = new System.Windows.Forms.Label();
+            this.btn_CE = new System.Windows.Forms.Button();
+            this.btn_Pct = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Equal
@@ -102,17 +101,6 @@ namespace Calculator
             this.btn_Neg.Text = "+/-";
             this.btn_Neg.UseVisualStyleBackColor = true;
             this.btn_Neg.Click += new System.EventHandler(this.btn_Neg_Click);
-            // 
-            // btn_Pct
-            // 
-            this.btn_Pct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Pct.Location = new System.Drawing.Point(12, 124);
-            this.btn_Pct.Name = "btn_Pct";
-            this.btn_Pct.Size = new System.Drawing.Size(74, 44);
-            this.btn_Pct.TabIndex = 39;
-            this.btn_Pct.Text = "%";
-            this.btn_Pct.UseVisualStyleBackColor = true;
-            this.btn_Pct.Click += new System.EventHandler(this.btn_Pct_Click);
             // 
             // btn_Plus
             // 
@@ -271,16 +259,6 @@ namespace Calculator
             this.btn_C.UseVisualStyleBackColor = false;
             this.btn_C.Click += new System.EventHandler(this.btn_C_Click);
             // 
-            // btn_CE
-            // 
-            this.btn_CE.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_CE.Location = new System.Drawing.Point(92, 124);
-            this.btn_CE.Name = "btn_CE";
-            this.btn_CE.Size = new System.Drawing.Size(74, 44);
-            this.btn_CE.TabIndex = 24;
-            this.btn_CE.Text = "CE";
-            this.btn_CE.UseVisualStyleBackColor = true;
-            // 
             // btn_OneDiv
             // 
             this.btn_OneDiv.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -290,6 +268,7 @@ namespace Calculator
             this.btn_OneDiv.TabIndex = 48;
             this.btn_OneDiv.Text = "1/x";
             this.btn_OneDiv.UseVisualStyleBackColor = true;
+            this.btn_OneDiv.Click += new System.EventHandler(this.btn_OneDiv_Click);
             // 
             // btn_Div
             // 
@@ -358,23 +337,26 @@ namespace Calculator
             this.lbl_PreviousCalcWindow.TabIndex = 51;
             this.lbl_PreviousCalcWindow.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lbl_output
+            // btn_CE
             // 
-            this.lbl_output.BackColor = System.Drawing.Color.Azure;
-            this.lbl_output.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_output.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lbl_output.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_output.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_output.ForeColor = System.Drawing.Color.Black;
-            this.lbl_output.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbl_output.Location = new System.Drawing.Point(127, 1);
-            this.lbl_output.MaximumSize = new System.Drawing.Size(500, 100);
-            this.lbl_output.Name = "lbl_output";
-            this.lbl_output.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbl_output.Size = new System.Drawing.Size(72, 40);
-            this.lbl_output.TabIndex = 52;
-            this.lbl_output.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lbl_output.Click += new System.EventHandler(this.lbl_output_Click);
+            this.btn_CE.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_CE.Location = new System.Drawing.Point(92, 124);
+            this.btn_CE.Name = "btn_CE";
+            this.btn_CE.Size = new System.Drawing.Size(74, 44);
+            this.btn_CE.TabIndex = 24;
+            this.btn_CE.Text = "CE";
+            this.btn_CE.UseVisualStyleBackColor = true;
+            // 
+            // btn_Pct
+            // 
+            this.btn_Pct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Pct.Location = new System.Drawing.Point(12, 124);
+            this.btn_Pct.Name = "btn_Pct";
+            this.btn_Pct.Size = new System.Drawing.Size(74, 44);
+            this.btn_Pct.TabIndex = 39;
+            this.btn_Pct.Text = "%";
+            this.btn_Pct.UseVisualStyleBackColor = true;
+            this.btn_Pct.Click += new System.EventHandler(this.btn_Pct_Click);
             // 
             // Calculator
             // 
@@ -383,7 +365,6 @@ namespace Calculator
             this.BackColor = System.Drawing.Color.LightBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(342, 420);
-            this.Controls.Add(this.lbl_output);
             this.Controls.Add(this.lbl_PreviousCalcWindow);
             this.Controls.Add(this.lbl_Window);
             this.Controls.Add(this.btn_OneDiv);
@@ -427,7 +408,6 @@ namespace Calculator
         private System.Windows.Forms.Button btn_Com;
         private System.Windows.Forms.Button btn_0;
         private System.Windows.Forms.Button btn_Neg;
-        private System.Windows.Forms.Button btn_Pct;
         private System.Windows.Forms.Button btn_Plus;
         private System.Windows.Forms.Button btn_9;
         private System.Windows.Forms.Button btn_8;
@@ -442,14 +422,14 @@ namespace Calculator
         private System.Windows.Forms.Button btn_1;
         private System.Windows.Forms.Button btn_Del;
         private System.Windows.Forms.Button btn_C;
-        private System.Windows.Forms.Button btn_CE;
         private System.Windows.Forms.Button btn_OneDiv;
         private System.Windows.Forms.Button btn_Div;
         private System.Windows.Forms.Button btn_Sqrt;
         private System.Windows.Forms.Button btn_PowerTwo;
         private System.Windows.Forms.Label lbl_Window;
         private System.Windows.Forms.Label lbl_PreviousCalcWindow;
-        private System.Windows.Forms.Label lbl_output;
+        private System.Windows.Forms.Button btn_CE;
+        private System.Windows.Forms.Button btn_Pct;
     }
 }
 
