@@ -144,7 +144,7 @@ namespace Calculator
                 //Add this to the universal method call I will add later before continueing
                 if (calculations.calculatedNumber)
                 {
-                    calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
+                    calculations.newNumber = 0;
                     lbl_Window.Text = calculations.PerformCalculation();
                 }
                 callCalculation("multiplication");
