@@ -24,7 +24,10 @@ namespace Calculator
             lbl_Window.Text += num;
             if (calculations.calculatedNumber)
             {
-                calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
+                if (calculations.CheckValidNumber(lbl_Window.Text))
+                {
+                    calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
+                }
             }
         }
 
@@ -106,6 +109,11 @@ namespace Calculator
             calculations.calculatedNumber = false;
             calculations.requestedCalc = "";
         }
+        private void btn_CE_Click(object sender, EventArgs e)
+        {
+            calculations.newNumber = 0;
+            lbl_Window.Text = "";
+        }
         private void btn_Del_Click(object sender, EventArgs e)
         {
             if (lbl_Window.Text.Length != 0)
@@ -174,12 +182,14 @@ namespace Calculator
         private void btn_Pct_Click(object sender, EventArgs e)
         {
             //Not sure how to implement this atm with my code
-            //if (calculations.calculatedNumber) {
-              //  calculations.newNumber = Convert.ToDouble(lbl_Window.Text);
-                //calculations.requestedCalc = "pct";
-                //lbl_PreviousCalcWindow.Text = lbl_Window.Text + calculations.checkSymbol();
-                //lbl_Window.Text = "";
-            //}
+           if (calculations.calculatedNumber) {
+                if (calculations.CheckValidNumber(lbl_Window.Text))
+                {
+                    calculations.newNumber = Convert.ToDouble(lbl_Window.Text) / 100;
+                }
+                lbl_PreviousCalcWindow.Text += Convert.ToString(calculations.newNumber);
+                lbl_Window.Text = calculations.PerformCalculation();
+            }
         }
         private void btn_Equal_Click(object sender, EventArgs e)
         {

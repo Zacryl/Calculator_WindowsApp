@@ -346,6 +346,7 @@ namespace Calculator
             this.btn_CE.TabIndex = 24;
             this.btn_CE.Text = "CE";
             this.btn_CE.UseVisualStyleBackColor = true;
+            this.btn_CE.Click += new System.EventHandler(this.btn_CE_Click);
             // 
             // btn_Pct
             // 
